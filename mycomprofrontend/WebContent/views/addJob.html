@@ -1,0 +1,68 @@
+<link  rel="stylesheet" href='resources/css/register.css'/>		
+<style>.from-style1 {margin-bottom:2em;margin-top:2em;}.loginform{padding: 50px;background:rgba(37, 16, 1, 0.8);}</style>
+<div class="container-fluid" style="background-image: url('resources/images/16.jpg'); background-size: 100%">
+<div class="container col-md-6 col-md-offset-3 loginform"><h1><span ng-hide="job.id">Add Job</span>
+						    <span ng-show="job.id">Update Job</span>
+					    </h1>
+						<form class="form-horizontal" style="text-align: left" ng-submit="addJob()">
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="jobTitle">Job Title</label>
+								<div class="col-sm-7">
+								<input type="text" id="jobTitle" ng-model="job.job_title" class="form-control" required maxlength="50"/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="experience">Experience</label>
+								<div class="col-sm-7">
+								<input type="text" id="experience" ng-model="job.experience" class="form-control" pattern="[0-9]+" required title="Only digit allowed" maxlength="2"/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="vacancies">Vacancies</label>
+								<div class="col-sm-7">
+								<input type="text" id="vacancies" ng-model="job.vacancies" class="form-control" pattern="[1-9]{1}[0-9]*" title="Only digit allowed, also cannot start with zero" maxlength="6"/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="location">Location</label>
+								<div class="col-sm-7">
+								<input type="text" id="location" ng-model="job.location" class="form-control" required maxlength="255"/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="salary">Salary</label>
+								<div class="col-sm-7">
+								<input type="text" id="salary" ng-model="job.salary" class="form-control" pattern="[1-9]{1}[0-9]*" title="Only digit allowed, salary cannot start with zero" maxlength="9"/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="jobDesc">Description</label>
+								<div class="col-sm-7">
+								<textarea id="jobDesc" ng-model="job.job_description" class="form-control" rows="5" placeholder="Add Description" required maxlength="255"></textarea>	
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="skill">Skills Required</label>
+								<div class="col-sm-7">
+								<textarea id="skill" ng-model="job.skills_required" class="form-control" rows="5" placeholder="Add Skills" required maxlength="255"></textarea>	
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="company">Company name</label>
+								<div class="col-sm-7">
+								<input type="text" id="company" ng-model="job.company_name" class="form-control" required/>
+								</div>
+							</div>
+							<div class="form-group from-style1">
+								<label class="col-sm-5 myBoldFont" for="contact">Contact Number</label>
+								<div class="col-sm-7">
+								<input type="text" ng-model="job.contact" id="contact" class="form-control" pattern="[6-9]{1}[0-9]{9}" title="Enter a 10 digit mobile number" required maxlength="10"/>
+								</div>
+							</div><br/>
+							<div class="col-sm-6">
+							<input type="submit" value="save" class="btn btn-success btn-block myBoldFont"/></div>
+							<div class="col-sm-6">
+							<a href="#!home" class="btn btn-danger btn-block myBoldFont">Cancel</a>
+							</div>
+							</form>
+			</div></div>

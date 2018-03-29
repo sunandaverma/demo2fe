@@ -1,0 +1,34 @@
+<div class="container-fluid" style="background-image: url('resources/images/46.jpg'); background-size: 100%;padding-bottom: 40px;padding-top:40px;">
+<div class="container col-md-offset-2 col-md-8" style="padding:20px;font-size:20px;">
+<div style="background-color: #FFF;">
+<div style="background-color:rgb(51,122,183);color:#fff;padding:10px;margin:0" class="row" ><div class="col-md-12"><h2><b>{{job.job_title}}</b></h2></div>
+<div class="row" style="margin:0"><div class="col-md-4">{{job.company_name}}</div><div class="col-md-offset-4 col-md-4"><span class="fa fa-calendar"> </span>&nbsp;&nbsp;{{job.posted_on | date:'dd MMMM yyyy'}}</div></div>
+<br/></div><div style="padding-left:20px">
+<table class="table">
+<tr><td class="text-center"><span class="fa fa-group"></span></td><td><span ng-hide="job.vacancies"> Not Mentioned</span> <span ng-show="job.vacancies"> {{job.vacancies}} vacancies</span></td></tr>
+<tr><td class="text-center"><span class="glyphicon glyphicon-briefcase"></span></td><td><span ng-hide="job.experience">Fresher</span> <span ng-show="job.experience">{{job.experience}} years</span></td></tr>
+<tr><td class="text-center"><span class="glyphicon glyphicon-map-marker"></span></td><td> {{job.location}}</td></tr>
+<tr><td class="text-center"><span class="fa fa-mortar-board"></span></td><td> {{job.skills_required}}</td></tr>
+<tr><td class="text-center"><span class="fa fa-rupee"></span></td><td><span ng-hide="job.salary">Not Disclosed</span> <span ng-show="job.salary"> {{job.salary}}</span></td></tr> 
+</table><hr/>
+<h3><b>Job Description</b></h3>
+<p>{{job.job_description}}</p>
+</div>
+<div style="background-color:grey;color:#fff;padding:10px">
+<h3><b>Employer Details</b></h3>
+Company Name : {{job.company_name}}<br/>
+Contact Number : {{job.contact}}
+</div>
+<a ng-click="jobLogin()" class="btn btn-primary btn-block myBoldFont" ng-hide="currentUser">Login to Apply</a>
+<div  style="padding:10px;background-color:rgb(51,122,183);color: #fff;text-align: center;" ng-show="currentUser" ng-if="currentUser.role!='admin'">
+<button class="btn btn-primary btn-block myBoldFont" ng-hide="applied" ng-click="applyForJob(job.id)">Apply</button>
+<span class="myBoldFont" ng-show="applied">You have already applied for this Job</span>
+</div>
+
+ <div class="row" ng-show="currentUser.role=='admin'" style="margin:0">
+ <br/>
+<div class="col-md-4"> <a href="#!viewAppliedUser/{{job.id}}" class="btn btn-primary myBoldFont btn-block">View Applied User</a></div>
+<div class="col-md-4"><a href="#!updateJob/{{job.id}}" class="btn btn-success myBoldFont btn-block">Update</a></div>
+<div class="col-md-4"><button ng-click="deleteJob(job.id)" class="btn btn-danger myBoldFont btn-block">Delete</button></div>
+<br/><br/></div>
+</div></div></div>

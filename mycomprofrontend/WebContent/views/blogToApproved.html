@@ -1,0 +1,63 @@
+<div class="container-fluid" style="background-image: url('resources/images/43.jpg'); background-size: 100%;">
+<br/>
+<div class="container">
+<div class="container text-center myBoldFont row">
+<div class="col-md-6 blogTab" id="approveBlogTab">Blogs Waiting for approval</div>
+<div class="col-md-6 blogTab" id="rejectBlogTab">Rejected Blogs</div></div>
+
+<div id="approveBlog">
+<div class="msg myBoldFont" ng-show="blogs.length==0">No Post To Show</div>
+<div ng-repeat="b in blogs | orderBy:'-posted_on'" class="blogBox" style="background-color: white;border-bottom: 5px outset rgb(51,122,183);">
+<a href="#!viewBlog/{{b.blog_id}}"><h2><b>{{b.blog_title}}</b></h2></a><br/>
+<div class="row">
+<div class="col-md-3"><img src="/w3images/fjords.jpg" alt="Blog image" onerror="this.src='resources/images/boxCover.jpg'" style="width:100%"/></div>
+<div class="col-md-9"><span style="font-size:17px;">{{b.blog_description.substring(0,455)}}.........</span></div>
+</div><br/>
+<div class="row"  style="font-size:20px;">
+<div class="col-md-8"><b>Posted By : </b>{{b.posted_by.firstname}} {{b.posted_by.lastname}}</div>
+<div class="col-md-4"><b>Posted On : </b>{{b.posted_on | date:"dd/MMM/yyyy"}}</div>
+</div><br/>
+<div class="row">
+<div class="col-md-6"><button class="btn btn-primary btn-block" ng-click="approveBlog(b.blog_id)">Approve</button></div><div class="col-md-6"><button class="btn btn-danger btn-block" ng-click="rejectBlog(b.blog_id)">Reject</button></div>
+</div></div></div>
+
+<div id="rejectBlog"><div class="msg myBoldFont" ng-show="rejectedBlogs.length==0">No Post To Show</div>
+<div ng-repeat="b in rejectedBlogs | orderBy:'-posted_on'" class="blogBox"  style="background-color: white;border-bottom: 5px outset rgb(51,122,183);">
+<a href="#!viewBlog/{{b.blog_id}}"><h2><b>{{b.blog_title}}</b></h2></a><br/>
+<div class="row">
+<div class="col-md-3"><img src="/w3images/fjords.jpg" alt="Blog image" onerror="this.src='resources/images/boxCover.jpg'" style="width:100%"/></div>
+<div class="col-md-9"><span style="font-size:17px;">{{b.blog_description.substring(0,455)}}.........</span></div>
+</div><br/>
+<div class="row"  style="font-size:20px;">
+<div class="col-md-8"><b>Posted By : </b>{{b.posted_by.firstname}} {{b.posted_by.lastname}}</div>
+<div class="col-md-4"><b>Posted On : </b>{{b.posted_on | date:"dd/MMM/yyyy"}}</div>
+</div><br/>
+<div class="row">
+<div class="col-md-12"><button class="btn btn-primary btn-block" ng-click="approveBlog(b.blog_id)">Approve</button></div>
+</div></div></div>
+</div><br/>
+</div>
+<style>.blogTab{
+font-size: 30px;color:white;
+padding:20px;background-color:rgb(55,133,196);
+}
+.msg{ font-size:40px;text-align:center;padding:20px;background-color:white;}
+</style>
+<script>
+$(document).ready(function(){
+	$("#approveBlogTab").css("background-color","rgb(41,101,150)");
+	$("#rejectBlog").hide();
+	$("#approveBlogTab").click(function(){
+		$("#approveBlogTab").css("background-color","rgb(41,101,150)");
+		$("#rejectBlogTab").css("background-color","rgb(55,133,196)");
+		$("#approveBlog").show();	
+		$("#rejectBlog").hide();	
+	});
+	$("#rejectBlogTab").click(function(){
+		$("#rejectBlogTab").css("background-color","rgb(41,101,150)");
+		$("#approveBlogTab").css("background-color","rgb(55,133,196)");
+		$("#rejectBlog").show();	
+		$("#approveBlog").hide();	
+	});
+});
+</script>

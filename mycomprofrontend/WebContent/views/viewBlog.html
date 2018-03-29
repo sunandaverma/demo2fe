@@ -1,0 +1,34 @@
+<div class="container-fluid" style="background-image: url('resources/images/46.jpg'); background-size: 100%;padding-bottom: 40px;padding-top:40px;">
+
+<div class="col-md-6 col-md-offset-3" style="background-color: #FFF;border: 4px outset white;">
+<h1><b>{{blog.blog_title}}</b></h1>
+<hr/>
+<img ng-src="http://localhost:8081/mycomprobackend/resources/images/{{blog.blog_id}}.jpg" alt="Blog image" onerror="this.src='resources/images/boxCover.jpg'" style="width:100%"/><br/>
+<br/><div class="row"  style="font-size:20px;">
+<div class="col-md-8"><b>Author : </b><a href="#!viewProfile/{{blog.posted_by.username}}">{{blog.posted_by.firstname}} {{blog.posted_by.lastname}}</a></div>
+<div class="col-md-4"><b><i class="fa fa-calendar"></i> </b>{{blog.posted_on | date:"dd/MMM/yyyy"}}</div>
+</div><div style="border:2px solid black;width:100%;margin-top: 10px"></div>
+<h3>{{blog.blog_description}}</h3>
+<br/>
+<div class="row" ng-if="blog.approved=='NA' && currentUser.role=='admin'">
+<div style="border:2px solid black;width:100%;margin-top: 10px"></div><br/>
+<div class="col-md-6"><button class="btn btn-primary btn-block" ng-click="approveBlog(b.blog_id)">Approve</button></div><div class="col-md-6"><button class="btn btn-danger btn-block" ng-click="rejectBlog(b.blog_id)">Reject</button></div>
+<br/><br/></div>
+<div style="box-shadow:0 0 2px grey;" ng-show="blog.approved=='A'">
+<div style="font-size: 30px;background-color:#D3D3D3;padding:10px;">
+<span class="fa fa-comments"> {{allBlogComment.length}} comments</span>
+</div>
+<div style="padding:20px;">
+<form ng-submit="addBlogComment()">
+<textarea ng-model="blogComment.commentText" rows="5" class="form-control" required="true"></textarea>
+<br/><a ng-click="commentLogin()" ng-hide="currentUser.firstname" class="btn btn-success myBoldFont pull-right">Login to post</a><input ng-show="currentUser.firstname" type="submit" value="Post Comment" class="btn btn-success myBoldFont pull-right"/>
+<br/></form></div><br/>
+<div style="background-color:#D3D3D3;padding:20px;"></div>
+<table class="table table-hover">
+<tr ng-repeat="comment in allBlogComment | orderBy:'-commentedOn'" style="padding:10px;">
+<td>&nbsp;<img src="http://localhost:8081/mycomprobackend/getProfilePicture/{{comment.commentedBy.username}}" alt="profile image" class="img-responsive" style="width:150px;padding:2px;border-radius:100%;border: 1.5px solid rgb(142,57,0);"/>
+</td><td style="font-family: Agency FB" colspan="2"><span style="font-size:22px;font-weight:900">{{comment.commentedBy.firstname}} {{comment.commentedBy.lastname}}</span><br/><span style="font-size:16px;font-weight:900">{{comment.commentedOn | date:"dd MMMM yyyy"}}</span><br/><span style="font-size:17px;font-family: Footlight MT Light;font-weight: 500">{{comment.commentText}}</span></td>
+</tr>
+</table>
+</div>
+</div><br/></div>

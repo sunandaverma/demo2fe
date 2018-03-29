@@ -1,0 +1,23 @@
+<style>
+.thumbnail{
+border: 5px outset rgb(51,122,183);}
+</style>
+<div class="container-fluid" style="background-image: url('resources/images/43.jpg'); background-size: 100%;">
+<br/>
+
+<div class="container">
+<div class="text-center myBoldFont" style="padding:20px;font-size: 40px;background-color:rgb(51,122,183);color:white">My Friends</div>
+<div style="font-size: 40px;font-weight: 900;text-align: center;padding:20px;background-color: white" ng-show="friendsList.length==0">No Friends to show</div>
+<div style="background-color: white;margin:0" class="row"><br/>
+<div ng-repeat="friend in friendsList" class="col-sm-6 col-md-3">
+<a href="#!viewProfile/{{friend.username}}"><div class="thumbnail">
+<img src="http://localhost:8081/mycomprobackend/getProfilePicture/{{friend.username}}" class="imgAlt" alt="Image Not Available" style="font-size:40px;height:200px;width:100%"/>
+<div class="caption text-center">
+          <span style="font-family:Lucida Calligraphy;font-size:18px;font-weight: 900;padding-top: 10px;">{{friend.firstname}} {{friend.lastname}}</span>
+<br/>       <br/>   <span style="bottom:2px;"><a href="" class="btn btn-primary btn-block myBoldFont" ng-click="rejectRequest(friend.username)">Unfriend</a></span>
+</div>
+</div></a>
+</div>
+</div>
+</div><br/>
+</div>

@@ -1,0 +1,61 @@
+<div class="container-fluid" style="background-image: url('resources/images/43.jpg'); background-size: 100%;">
+<br/>
+<div class="container">
+<div class="myBoldFont" style="padding:20px;font-size: 40px;background-color:rgb(51,122,183);color:white">Job Opportunities
+<button class="btn btn-primary pull-right" id="searchBtn" style="font-size: 30px"><i class="fa fa-search"></i></button>
+<div class="row myNote">
+<div class="col-sm-6">
+<h3><b>Search By Title</b></h3> <input ng-model="searchText.job_title" class="form-control"/></div>
+<div class="col-sm-6">
+<h3><b>Search By Skills Required</b></h3> <input ng-model="searchText.skills_required" class="form-control"/></div>
+</div>
+
+</div>
+<div class="msg myBoldFont" ng-show="jobs.length==0">No Jobs Posted Yet</div>
+<div class="blogBox" ng-repeat="job in jobs | filter:searchText | orderBy:'-posted_on'" style="background-color: white;border-bottom: 5px outset rgb(51,122,183);">
+<div style="margin:2px;padding:10px;border: 2px solid black"><a href="#!viewJob/{{job.id}}">
+<h1><b>{{job.job_title}}</b></h1></a>
+<span style="color:black"><h3>{{job.company_name}}</h3></span>
+<div style="border:1px solid grey;width:100%;margin-top: 10px"></div>
+<br/>
+<table style="font-size: 20px">
+<tr><td><span class="glyphicon glyphicon-briefcase"></span></td><td><span ng-hide="job.experience">Fresher</span> <span ng-show="job.experience">{{job.experience}} years</span></td></tr>
+<tr><td><span class="glyphicon glyphicon-map-marker"></span></td><td>{{job.location}}</td></tr>
+<tr><td><span class="fa fa-mortar-board"></span></td><td>{{job.skills_required}}</td></tr>
+</table><br/>
+<div style="border:1px solid grey;width:100%;margin-top: 10px"></div>
+<br/>
+<span  style="font-size: 20px" class="fa fa-rupee"> <span ng-hide="job.salary"> Not Disclosed</span> <span ng-show="job.salary"> {{job.salary}}</span></span> <span style="font-size: 20px" class="fa fa-calendar pull-right"> {{job.posted_on | date:"dd/MMM/yyyy"}}</span>
+<div class="row" ng-show="currentUser.role=='admin'" style="padding-top:3px;bottom-top:3px">
+<div class="col-md-4" style="padding-top:3px;bottom-top:3px"><a href="#!viewAppliedUser/{{job.id}}" class="btn btn-primary myBoldFont btn-block">View Applied User</a>
+</div>
+<div class="col-md-4" style="padding-top:3px;bottom-top:3px"><a href="#!updateJob/{{job.id}}" class="btn btn-success btn-block myBoldFont">Update</a>
+</div>
+<div class="col-md-4" style="padding-top:3px;bottom-top:3px"><button ng-click="deleteJob(job.id)" class="btn btn-danger btn-block myBoldFont">Delete</button>
+</div>
+<br/><br/></div>
+
+
+</div></div><br/>
+</div>		</div>
+<style>
+.myNote{
+margin-top:10px;
+border-left: 4px solid;
+border-right: 4px solid;
+border-color: #2196F3;
+background-color: #bbdddd;
+padding:10px;
+padding-bottom:20px;
+color:black}
+.msg{ font-size:40px;text-align:center;padding:20px;background-color:white;}
+</style>
+
+<script> 
+$(document).ready(function(){
+    $(".myNote").hide();
+    $("#searchBtn").click(function(){
+        $(".myNote").slideToggle("slow");
+    });
+});
+</script>

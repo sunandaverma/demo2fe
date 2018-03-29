@@ -1,0 +1,20 @@
+<div class="container-fluid" style="background-image: url('resources/images/43.jpg'); background-size: 100%;">
+<br/><div class="container">
+<div class="myBoldFont" style="padding:20px;font-size: 40px;background-color:rgb(51,122,183);color:white">My Blog Posts<a href="#!addBlog" class="btn btn-success pull-right myBoldFont" style="font-size: 20px">Create New Blog</a></div>
+<div class="msg myBoldFont" ng-show="blogs.length==0">No Post To Show</div>
+<div ng-repeat="b in blogs | orderBy:'-posted_on'" class="blogBox"  style="background-color: white;border-bottom: 5px outset rgb(51,122,183);">
+<a href="#!viewBlog/{{b.blog_id}}"><h2><b>{{b.blog_title}}</b></h2></a><br/>
+<div class="row">
+<div class="col-md-3"><img src="/w3images/fjords.jpg" alt="Blog image" onerror="this.src='resources/images/boxCover.jpg'" style="width:100%"/></div>
+<div class="col-md-9"><span style="font-size:17px;">{{b.blog_description.substring(0,455)}}.........</span></div>
+</div><br/>
+<div class="row"  style="font-size:20px;">
+<div class="col-md-8"><b>Status : </b><span ng-show="b.approved=='A'">Approved</span><span ng-show="b.approved=='NA'">Waiting For Approval</span><span ng-show="b.approved=='R'">Rejected</span></div>
+<div class="col-md-4"><b>Posted On : </b>{{b.posted_on | date:"dd/MMM/yyyy"}}</div>
+</div><br/>
+<div class="row">
+<div class="col-md-6"><a class="btn btn-primary btn-block" href="#!updateBlog/{{b.blog_id}}">Update</a></div><div class="col-md-6"><button class="btn btn-danger btn-block" ng-click="deleteBlog(b.blog_id)">Delete</button></div>
+</div></div>
+</div><br/></div>
+<style>.msg{ font-size:40px;text-align:center;padding:20px;background-color:white;}
+</style>

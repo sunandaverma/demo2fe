@@ -1,0 +1,77 @@
+<style>
+.chatList{
+background-color:rgb(51,122,183);color:white;height:550px;font-size:20px;
+}
+</style>
+<div class="container-fluid" style="background-image: url('resources/images/43.jpg'); background-size: 100%;">
+<br/>
+<div class="container">
+
+<div style="border:5px solid rgb(51,122,183);background-color:white;" class="row">
+
+<div class="text-center myBoldFont" style="padding:20px;font-size: 40px;background-color:rgb(51,122,183);color:white">Chat Room</div>
+
+<div class="chatList col-sm-5">
+	  <button class="btn btn-primary btn-block" id="chatUserTableButton" style="padding:8px;font-size:25px;font-weight:900">Choose a user</button>
+   	  <table class="table" id="chatUserTable">
+      <tr><td markable ng-click="setChatTo('all')"><img src="http://localhost:8081/mycomprobackend/getProfilePicture/all" style="height:30px;width:30px"/> Group Chat [ {{users.length-1}} user(s) online ]</td></tr>
+      <tr ng-repeat="friend in friendsList | filter:chatfriendfilter">
+      <td markable ng-click="setChatTo(friend.username)"><img src="http://localhost:8081/mycomprobackend/getProfilePicture/{{friend.username}}" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px"/> {{capitalize(friend.firstname)}} {{capitalize(friend.lastname)}}</td></tr>
+      <tr ng-show="users.length==1"><td>No friend is Online</td></tr>
+      </table>   
+</div>
+<div ng-show="chat.to==null" class="col-sm-7" style="padding: 10px;height:500px">
+<img src="resources/images/nochatmsg.jpg" class="img-responsive" style="height:100%;margin:auto"/>
+</div>    
+<div ng-show="chat.to!=null" class="col-sm-7" style="padding: 10px">
+<div style="height:70px;font-size:25px;font-weight:900;border-bottom: 10px solid grey;">
+<img src="http://localhost:8081/mycomprobackend/getProfilePicture/{{chat.to}}" alt="Image" style="height:45px;width:45px"/> {{capitalize(chat.to)}}
+</div>
+<div style="height:400px;overflow:hidden;overflow-y:scroll;" id="chatBox">
+<div ng-repeat="msg in chats | filter:chatFromFilter" style="padding:10px;">
+<div style="border:2px solid grey;padding: 10px;font-size: 15px">{{msg.message}}</div>
+<div class="row">
+<div style="margin-left: 40px;margin-right: 40px;float:{{msg.direction}}">
+<img src="resources/images/msg.jpg" style="font-size:10px;height:20px;width:40px;"/><br/><br/>
+<img ng-if="msg.direction=='left'" src="http://localhost:8081/mycomprobackend/getProfilePicture/{{msg.from}}" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px;border-radius: 100%;border: 1px solid blue;"/>
+<img ng-if="msg.direction=='right'" src="http://localhost:8081/mycomprobackend/getProfilePicture/{{currentUser.username}}" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px;border-radius: 100%;border: 1px solid blue;"/>
+<span style="font-size:15px;font-weight: 900"> - {{msg.from}}</span>
+</div></div>
+</div>
+</div>
+<form ng-submit="sendMessage()">
+<div class="input-group" style="background-color:grey;padding:10px;bottom:0">
+<input type="text" class="form-control" ng-model="chat.message" placeholder="Enter message"  required>
+<div class="input-group-btn">
+<button type="submit" class="btn btn-success">Send</button>
+</div>
+</div></form>
+</div>
+</div>
+</div>
+<br/>
+</div>
+<script>
+if($(window).width()<754){
+	$("#chatUserTable").hide("slow");
+	$(".chatList").css('height','100%');
+	}
+	else{
+		$("#chatUserTable").show("slow");	
+	}
+$(window).resize(function(){
+	if($(window).width()<754){
+		$("#chatUserTable").hide("slow");
+		$(".chatList").css('height','100%');
+	}
+	else{
+		$("#chatUserTable").show("slow");	
+		$(".chatList").css('height','550px');
+	}
+});
+$("#chatUserTableButton").click(function(){
+	if($(window).width()<754){
+    $("#chatUserTable").toggle("slow");
+	}
+});
+</script>

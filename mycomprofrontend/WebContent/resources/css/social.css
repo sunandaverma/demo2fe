@@ -1,0 +1,44 @@
+.social_nav{ text-align:right;}
+.social_nav li{ display:block; float:left}
+.social_nav li a{background-color:#fff; display:block; float:left; height:60px; text-indent:-9999px; width:60px; border:1px solid #ccc; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s;  -o-transition:all 0.5s; transition:all 0.5s}
+.social_nav li.facebook a{ background-image:url("../images/socials.png"); background-position:0 -60px; background-size:540px 120px}
+.social_nav li.facebook a:hover{ background-position:0 0px; background-size:540px 120px; background-color:#436eac}
+.social_nav li.twitter a{ background-image:url("../images/socials.png"); background-position:-60px -60px; background-size:540px 120px}
+.social_nav li.twitter a:hover{ background-position:-60px 0px; background-size:540px 120px; background-color:#0598c9}
+.social_nav li.flickr a{ background-image:url("../images/socials.png"); background-position:-120px -60px; background-size:540px 120px}
+.social_nav li.pinterest a{ background-image:url("../images/socials.png"); background-position:-180px -60px; background-size:540px 120px}
+.social_nav li.pinterest a:hover{ background-position:-180px 0px; background-size:540px 120px; background-color:#cb2027}
+.social_nav li.googleplus a{ background-image:url("../images/socials.png"); background-position:-240px -60px; background-size:540px 120px}
+.social_nav li.googleplus a:hover{ background-position:-240px 0px; background-size:540px 120px; background-color:#d64b2e}
+.social_nav li.vimeo a{ background-image:url("../images/socials.png"); background-position:-300px -60px; background-size:540px 120px}
+.social_nav li.vimeo a:hover{ background-position:-300px 0px; background-size:540px 120px; background-color:#86ae24}
+.social_nav li.youtube a{ background-image:url("../images/socials.png"); background-position:-360px -60px; background-size:540px 120px; width:120px}
+.social_nav li.youtube a:hover{ background-position:-360px 0px; background-size:540px 120px; background-color:#e32114}
+.social_nav li.mail a{ background-image:url("../images/socials.png"); background-position:-480px -60px; background-size:540px 120px; width:64px}
+.social_nav li.mail a:hover{background-position:-480px 0px; background-size:540px 120px; background-color:#bc75d6}
+
+#myFile{
+display:none;
+}
+.file-preview {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.file-drop-zone {
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    height:350px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 12px 15px 12px 12px;
+    padding: 5px;
+}
+.file-drop-zone-title {
+    color: #aaa;
+    font-size: 1.6em;
+    padding: 85px 10px;
+    cursor: default;
+}

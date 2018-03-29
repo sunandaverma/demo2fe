@@ -1,0 +1,36 @@
+   .from-style1 input,.from-style1 textarea,.from-style1 select,.from-style1 select option{
+ border:0;
+ border-bottom:0.07em solid #fff;
+ border-radius:0;
+ background:none;
+ font-weight: 400;
+ font-size: 1.5em;
+ color:#fff;
+ }
+ .from-style1 select option{
+ color:black;
+ font-size: 1em;
+ 
+ }
+.from-style1 {
+    margin-bottom:1em;
+    margin-top:1em;
+    color: #fff;
+}
+
+.from-style1 label {
+   	color: #fff;
+   	font-weight: 400;
+    font-size: 1.6em;
+    line-height: 1em;
+    text-align: left;
+    margin-left:0;
+}
+.from-style1 span{
+    color:#bfbfbf;
+    font-size: 1.3em;
+ }
+.from-style1 a{
+ color:#fff;
+ font-size: 1.5em;
+ }

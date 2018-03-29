@@ -1,0 +1,22 @@
+<link href="resources/css/login.css" rel="stylesheet"/>
+<div class="container-fluid" style="background-image: url('resources/images/10.jpg'); background-size: 100%;height:600px">
+<br/><br/>
+<center><span style="color:white;font-size:50px;text-align:center;font-family:Lucida Calligraphy;">Sign In</span>
+<br/><br/><span style="border:1px solid white;padding:10px;font-size: 25px;color:#fff" ng-show="message">{{message}}</span><span style="border:1px solid white;padding:10px;font-size: 25px;color:#fff" ng-show="logoutMsg">{{logoutMsg}}</span>
+</center>
+<form ng-submit="validateUser()" style="margin:50px">								
+<div class="col-md-4 col-md-offset-2 loginback">
+<table>
+<tr><td><span class="fa fa-user mylabel" style="font-size:40px"></span></td><td style="width:100%">
+<input type="text" class="myinput" ng-model="user.username" required="" maxlength="25" /></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td><span class="fa fa-lock mylabel" style="font-size:40px"></span></td>
+<td><input type="password" class="myinput" ng-model="user.password" required="" pattern="[A-za-z0-9]{8,}" title="Atleast have 8 characters, special characters are not allowed"/></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td colspan="2"><input type="submit" class="btn btn-pink btn-block myBoldFont" value="login"/></td>
+<tr/>
+</table>		
+</div>
+</form>
+</div> 

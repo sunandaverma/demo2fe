@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="resources/onlinelib/css/bootstrap.min.css"/>
+<script src="resources/onlinelib/js/jquery.min.js"></script>
+<script src="resources/onlinelib/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="resources/onlinelib/css/font-awesome.min.css"/>
+<script src="resources/onlinelib/js/angular.min.js"></script>
+<script src="resources/onlinelib/js/angular-route.js"></script>
+<script src="resources/onlinelib/js/angular-cookies.js"></script>
+<script src="resources/onlinelib/js/sockjs.js"></script>
+<script src="resources/onlinelib/js/stomp.js"></script> 
+<link  rel="stylesheet" href='resources/css/style.css'/>
+<link  rel="stylesheet" href='resources/css/social.css'/>
+<link rel="icon" href="resources/images/logo.png"/>
+<title>MyComPro</title>
+<style>
+#note{
+font-size:25px;
+font-weight:900;
+position:fixed;
+top:-160px;
+z-index:5;
+margin:auto;
+width:100%}
+</style>
+</head>
+<body ng-app="app">
+<div id="note" class="text-center">
+<div class="panel panel-primary " style="width:400px;margin: auto;">
+ <div class="panel-heading">Notification</div>
+     <div class="panel-body">New Message arrived</div>
+    </div></div>
+<nav class="navbar navbar-default" style="margin-bottom:0px;border-radius:0px;border:0;">
+  <div class="text-center" style="margin-top: -150px;margin-bottom:5px;color:#fff;font-family: Forte;">
+  <img src="resources/images/logo.png" style="width:70px;margin-top:-45px"/>
+  <span style="font-size:55px;padding-left: 10px;">MYCOM<span style="font-size:75px;">P</span>RO</span>
+</div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#!home">Home</a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+         <li><a href="#!jobs"/>Jobs</a></li>
+         <li><a href="#!addJob" ng-show="currentUser.role=='admin'"/>Add Job</a></li>
+        <li><a href="#!blogs">Blogs</a></li> 
+		<li><a href="#!blogsToApprove" ng-show="currentUser.role=='admin'"/>Blogs To Approve</a></li>
+        <li class="dropdown"  ng-show="currentUser.firstname">
+      	<a href="" class="dropdown-toggle" data-toggle="dropdown">Friends
+       	<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="#!getFriendsList">My Friends</a></li>
+         <li><a href="#!getSuggestedFriends">Friend Suggestion</a></li>
+         <li><a href="#!getFriendRequests">Friend Requests</a></li>
+         <li><a href="#!getSentRequests">Sent Requests</a></li>
+         </ul>
+       </li>
+      	<li ng-show="currentUser.firstname"><a href="#!chatRoom">ChatRoom</a></li>
+        <li><a href="#!aboutUs">About Us</a></li> 
+      </ul>
+		
+      <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"  ng-show="currentUser.firstname">
+      <a href="" class="dropdown-toggle" data-toggle="dropdown">Welcome {{currentUser.firstname}} {{currentUser.lastname}}
+       <span class="caret"></span></a>
+        <ul class="dropdown-menu" ng-show="currentUser.firstname">
+         <li><a href="#!viewProfile/{{currentUser.username}}"/>My Account</a></li>
+         <li><a href="#!changePass"/>Change Password</a></li>
+         <li><a href="" ng-click="logout()"/>
+         <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+       </li>
+         <li><a href="#!register" ng-hide="currentUser.firstname"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#!login" ng-hide="currentUser.firstname"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" style="padding:0;background-color:#656565" ng-view></div>
+<footer>
+<div class="container-fluid footer1">
+<div class="col-sm-6 col-md-2">
+				<h3><b>Information</b></h3>
+				<ul class="foot-info">
+					<li><a href="#!aboutUs">FAQ's</a></li>
+					<li><a href="#!aboutUs">About Us</a></li>
+					<li><a href="#!jobs"/>Jobs</a></li>
+        			<li><a href="#!blogs">Blogs</a></li> 
+				</ul></div>
+				<div class="col-sm-6 col-md-2  col-sm-offset-1">
+				<h3><b>Manage</b></h3>
+				<ul class="foot-info">
+				<li><a href="#!viewProfile/{{currentUser.username}}"/>My Account</a></li>
+         <li><a href="#!getFriendsList"/>My Friends</a></li>
+         <li ng-show="currentUser"><a href="" ng-click="logout()"/>Logout</a></li>
+       </ul></div>
+				<div class="col-sm-6 col-md-3">
+				<h3>&nbsp;&nbsp;&nbsp;<b>Contact Us</b></h3>
+				<ul class="foot-info" type="none">
+					<li><span class="glyphicon glyphicon-map-marker"></span> New Delhi, India</li>
+					<li><span class="glyphicon glyphicon-envelope"></span> myshoppro@example.com</li>
+					<li><i class="fa fa-phone" style="color:white"></i> +1234 567 890</li>
+				</ul></div>
+				<div class="col-sm-6 col-md-4 text-center">
+				<h3><b>Follow us on</b></h3>
+				<div>
+<ul class="social_nav">
+              <li class="facebook"><a href="https://www.facebook.com"></a></li>
+              <li class="twitter"><a href="https://www.twitter.com"></a></li>
+              <li class="pinterest"><a href="https://in.pinterest.com"></a></li>
+              <li class="googleplus"><a href="https://plus.google.com"></a></li>
+              <li class="vimeo"><a href="https://vimeo.com"></a></li>
+              <li class="youtube"><a href="https://www.youtube.com"></a></li>
+            </ul>
+     
+</div>
+     
+				</div>
+</div>
+<div class="container-fluid footer2">
+	© 2017 My Com Pro. All rights reserved | Design & Developed by Himanshu
+</div></footer>
+<script src="resources/js/app.js"></script>
+<script src="resources/service/UserService.js"></script>
+<script src="resources/controller/UserController.js"></script>
+<script src="resources/service/JobService.js"></script>
+<script src="resources/controller/JobController.js"></script>
+<script src="resources/service/BlogService.js"></script>
+<script src="resources/controller/BlogController.js"></script>
+<script src="resources/service/FriendService.js"></script>
+<script src="resources/controller/FriendController.js"></script>
+<script src="resources/controller/ViewProfileController.js"></script>
+<script src="resources/controller/ChatController.js"></script>
+<script src="resources/service/ChatService.js"></script>
+<script src="resources/controller/HomeController.js"></script>
+<script>
+$(".dropdown").mouseover(function(){
+	$(this).find("a").css('color','black');
+});
+$(".dropdown").mouseleave(function(){
+	if($(this).find("ul").is(':hidden')){
+	$('a:first',this).css('color','white');
+	}
+});
+</script>
+</body>
+</html>

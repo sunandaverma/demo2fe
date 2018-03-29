@@ -1,0 +1,76 @@
+<style>
+.chatList{
+background-color:rgb(51,122,183);color:white;height:550px;overflow:hidden;overflow-y:scroll;
+font-size:20px;
+}
+</style>
+<br/>
+<div class="container">
+<div style="border:5px solid rgb(51,122,183)" class="row">
+<div class="text-center myBoldFont" style="padding:20px;font-size: 40px;background-color:rgb(51,122,183);color:white">Chat Room</div>
+<div class="chatList col-sm-5">
+      <table class="table">
+      <tr><td class="text-center" ng-click="chat.to='all'"><img src="resources/images/user.png" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px"/> Group Chat</td></tr>
+      <tr ng-repeat="friend in friendsList | filter:chatfriendfilter">
+      <td class="text-center" ng-click="setChatTo(friend.username)"><img src="http://localhost:8081/mycomprobackend/getProfilePicture/{{friend.username}}" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px"/> {{capitalize(friend.firstname)}} {{capitalize(friend.lastname)}}</td>
+      </tr>
+      <tr ng-show="users.length==1"><td>No friend is Online</td></tr>
+      
+      </table>      
+    </div>
+    
+    <div class="col-sm-7" style="padding: 10px">
+    <div style="height:470px">
+<div ng-repeat="msg in chats" style="padding:10px;border-bottom: 2px solid blue;" class="row">
+<div style="border:2px solid grey;padding: 10px;font-size: 15px">{{msg.message}}</div>
+<div style="margin-left: 40px;margin-right: 40px;float: right;">
+<img src="resources/images/msg.jpg" style="font-size:10px;height:20px;width:40px;"/><br/><br/>
+<img src="resources/images/user.png" class="imgAlt" alt="Image Not Available" style="font-size:10px;height:30px;width:30px;border-radius: 100%;border: 1px solid blue;"/>
+<span style="font-size:15px;font-weight: 900"> - {{msg.from}}</span>
+</div>
+</div>
+    
+    </div>
+    <div class="input-group" style="background-color:grey;padding:10px;bottom:0">
+    <input type="text" class="form-control" ng-model="chat.message" placeholder="Enter message">
+    <div class="input-group-btn">
+      <button class="btn btn-success" ng-click="sendMessage()">
+        Send
+      </button>
+    </div>
+  </div>
+    </div>
+    
+    
+  </div>
+
+</div>
+
+
+
+
+<div class="row">
+<div class="col-md-12" id="chats">
+<div ng-repeat="chat in chats" class="chat {{chat.direction}}" ng-class="{'broadcast': chat.broadcast}">
+<span class="from">
+{{chat.from}}
+<small ng-if="chat.broadcast">BROADCAST</small>
+</span>
+{{chat.message}}
+</div>
+</div>
+</div>
+<div id="#joinedChat"><h1>you have joined</h1></div>
+{{users}}
+<!-- <div>
+<form>
+send to <select id="to" name="to" ng-model="chat.to">
+<option value="">select recipient</option>
+<option value="all">All user</option>
+<option ng-repeat="user in users" ng-if="currentUser.username!=user" value="{{user}}">{{user}}</option>
+</select>
+Message {{currentUser.username}}
+<textarea class="focus-on-click" name="message" rows="4" ng-model="chat.message"></textarea>
+<input type="submit" ng-click="sendMessage(chat)" name="send" value="send"/>
+</form>
+</div> -->

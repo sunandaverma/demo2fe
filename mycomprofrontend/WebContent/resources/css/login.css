@@ -1,0 +1,36 @@
+.mylabel{
+padding:5px;
+height:50px;
+width:50px;
+text-align:center;
+background-color:rgb(188,3,94);
+color:white
+}
+.myinput{
+padding:10px;
+font-size:30px;
+width:100%;
+color:white;
+background-color:black;
+border:none;
+border-right:10px solid rgb(188,3,94);
+height:50px;
+}
+.btn-pink{
+background-color:rgb(188,3,94);
+color:white;
+}
+.btn-pink:HOVER{
+background-color:rgb(157,2,80);
+color:white;
+}
+
+.btn-pink:ACTIVE{
+background-color:rgb(134,2,68);
+color:white;
+}
+.loginback{
+background-color:white;
+padding:20px;
+border:10px solid rgb(252,82,167);
+}

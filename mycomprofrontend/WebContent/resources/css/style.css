@@ -1,0 +1,101 @@
+.blogBox{
+box-shadow:0 0 10px grey;
+padding: 10px;
+//margin-top:20px;
+//margin-bottom: 20px;
+}
+.imgAlt{
+font-size: 55px;
+text-shadow:2px 2px black;
+font-weight:900;
+text-align: center;
+color: white;
+background:radial-gradient(skyblue,rgb(51,122,183));}
+/*.dropdown:HOVER ul{
+	visibility:visible;
+	opacity: 1;
+}
+.dropdown ul{
+	transition:opacity 0.8s;
+	visibility:hidden;
+	display:block;
+	opacity: 0;
+}*/
+.dropdown ul li{
+	font-size: 20px;
+}
+.navbar-default{
+background:linear-gradient(141deg, #0fb8c8 0%, #1fc8fa 51%, #2cb5ff 75%);	
+padding-top: 150px;
+	
+	}
+.navbar-nav li:HOVER{
+	background-color: #fff;
+}
+.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+	font-size:18px;
+	font-weight:900;
+	color:#fff;
+}
+.navbar-default .navbar-brand:HOVER{
+	background-color: #fff;
+}
+.icon-bar{
+	color:white;
+}
+body{
+	font-family: Book Antiqua;
+}
+.headStyle{
+	background-color: rgb(84,147,216);
+	text-align: center;
+	font-weight: 900;
+	font-family: Cooper Black;
+	font-size: 40px;
+	padding:25px 50px;
+}
+.myBoldFont{
+	font-weight: 900;
+	font-family: Bookman Old Style;
+	font-size:16px;	
+}
+.myFont{
+	font-family: Bookman Old Style;
+	font-size:16px;
+}
+
+.myBoldFontB{
+	font-weight: 900;
+	font-family: Bookman Old Style;
+	font-size:25px;	
+	margin-top : 8px;
+} 
+  
+  .footer2{
+  background-color: black;
+  color:white;
+  padding: 20px;
+  text-align: center;
+  }
+  .footer1{
+  background:linear-gradient(141deg, #0fb8c8 0%, #1fc8fa 51%, #2cb5ff 75%);	
+	color:white;
+  padding: 20px;}
+  
+  .foot-info li a{
+  color:white;
+  }
+   
+.loginform{margin-top: 30px;
+margin-bottom: 30px;
+color:#fff;
+background:rgba(0, 0, 0, 0.7);
+text-align: center;
+}
+
+.img-circle{
+	background-color:grey;
+	color:#fff;
+	font-size:20px;
+	padding:2.5px 9px 2.5px 9px;
+	}
